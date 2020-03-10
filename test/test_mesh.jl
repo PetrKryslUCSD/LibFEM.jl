@@ -31,7 +31,7 @@ mmesh2.test()
 module mmesh3
 using StaticArrays
 using LibFEM
-using LibFEM.Mesh: Q4, Shapes, connectivity, manifdim, nnodes, nfacets
+using LibFEM.Mesh: L2, Q4, Shapes, connectivity, manifdim, nnodes, nfacets, facettype
 using Test
 function test()
     shapetype = Q4
@@ -42,6 +42,7 @@ function test()
     @test connectivity(shapes, SVector{2}([2, 4]))[1][4] == 9
     @test manifdim(shapes) == 2
     @test nnodes(shapes) == 4
+    @test facettype(shapes) == L2
     @test nfacets(shapes) == 4
     true
 end
